@@ -45,6 +45,10 @@
         y += self.webView.bounds.size.height - height;
     }
 
+    if ([options objectForKey:@"buttonCallback"]) {
+        self.buttonCallback=[[options objectForKey:@"buttonCallback"] description];
+    }
+
     self.childView = [[UIView alloc] initWithFrame:CGRectMake(x,y,width,height)];
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(self.childView.bounds.origin.x, self.childView.bounds.origin.x, self.childView.bounds.size.width, self.childView.bounds.size.height)];
     self.mapView.delegate = self;
