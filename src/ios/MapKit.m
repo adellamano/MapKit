@@ -190,12 +190,18 @@
 }
 
 //Might need this later?
-/*- (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+- (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     MKCoordinateRegion mapRegion;
+    MKCoordinateSpan span;
     mapRegion.center = userLocation.coordinate;
     mapRegion.span.latitudeDelta = 0.2;
     mapRegion.span.longitudeDelta = 0.2;
+    CLLocationCoordinate2D location;
+    location.latitude = userLocation.coordinate.latitude;
+    location.longitude = userLocation.coordinate.longitude;
+    mapRegion.span = span;
+    mapRegion.center = location;
 
     [self.mapView setRegion:mapRegion animated: YES];
 }
@@ -214,7 +220,7 @@
     [self.webView stringByEvaluatingJavaScriptFromString:jsString];
     [jsString autorelease];
 }
- */
+
 
 
 - (MKAnnotationView *) mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>) annotation {
